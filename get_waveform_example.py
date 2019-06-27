@@ -39,8 +39,13 @@ ADC_wave = np.array(unpack('%sB' % len(ADC_wave),ADC_wave))
 Volts = (ADC_wave - yoff) * ymult  + yzero
 
 Time = np.arange(0, xincr * len(Volts), xincr)
-peaks, _ = find_peaks(Volts,height=0.5)
+peaks, _ = find_peaks(Volts,distance=150,height=0.5)
+if peaks.size>=4:
+    time=Time[peaks[3]]-Time[peaks[2]]
+    print(time)
 plt.plot(Volts)
 plt.plot(peaks,Volts[peaks],'bx')
 #plt.plot(Time, Volts,'b')#,peaks)#,Volts[peaks],'bx')
+#G=(2h/t)^2/rho, h=height of sample, t is time between peaks 3 and 4, rho=density
+
 plt.show()
