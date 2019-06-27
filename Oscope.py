@@ -22,8 +22,10 @@ class OScope:
         scope.write('DATA:WIDTH 1')
         scope.write('DATA:ENC RPB')
         self.scope=scope
-    #h is height of sample, rho is density of sample
-    def configSample(self,h=1,rho=1):
+        self.getConfigData()
+        self.configSample()
+    #h is height of sample (m), rho is density of sample (kg/m^3)
+    def configSample(self,h=.00948,rho=8960):
         self.h=h
         self.rho=rho
     def getConfigData(self):
@@ -43,15 +45,15 @@ class OScope:
         peaks, _ = find_peaks(Volts,distance=150,height=0.5)
         if peaks.size>=4:
             time=Time[peaks[3]]-Time[peaks[2]]
-            print("Time is: {}".format(time))
+            #print("Time is: {}".format(time))
         if (isPlot):
             plt.plot(Volts)
             plt.plot(peaks, Volts[peaks], 'bx')
             # plt.plot(Time, Volts,'b')#,peaks)#,Volts[peaks],'bx')
             plt.show()
         # G=(2h/t)^2/rho, h=height of sample, t is time between peaks 3 and 4, rho=density
-        G= (2*self.h/time)^2/self.rho
-        print("Shear is: {}".format(G))
+        G= (2*self.h/time)*(2*self.h/time)/self.rho
+        #print("Shear is: {}".format(G))
         data=[time,G]
         return data
 

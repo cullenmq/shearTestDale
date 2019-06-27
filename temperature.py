@@ -6,7 +6,7 @@ from mcculw.enums import TempScale
 from mcculw.ul import ULError
 
 import util
-from ai import AnalogInputProps
+from examples.props.ai import AnalogInputProps
 
 
 
@@ -20,15 +20,15 @@ class TLogger():
             ul.ignore_instacal()
             if not util.config_first_detected_device(self.board_num):
                 print("Could not find device.")
-                return False
+                return
         self.channel = 0
         ai_props = AnalogInputProps(self.board_num)
         if ai_props.num_ti_chans < 1:
             util.print_unsupported_example(self.board_num)
-            return False
+            return
         #if we made it this far, we gucci
         self.isInit = True
-        return True
+        return
     def getTemp(self):
         if not self.isInit:
             print("Device Not Initialized")
@@ -38,7 +38,7 @@ class TLogger():
             value = ul.t_in(self.board_num, self.channel, TempScale.CELSIUS)
 
             # Display the value
-            print("Channel " + str(self.channel) + " Value (deg C): " + str(value))
+            #print("Channel " + str(self.channel) + " Value (deg C): " + str(value))
             return value
         except ULError as e:
             util.print_ul_error(e)

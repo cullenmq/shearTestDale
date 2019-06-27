@@ -16,6 +16,7 @@ from threading import Event
 from Oscope import OScope
 from temperature import TLogger
 import datetime
+import time
 now = datetime.datetime.now()
 
 import csv
@@ -105,23 +106,34 @@ class timerPP(Thread):
     def run(self):
         while not self.stopped.wait(self.period):
             #get system time (for logging purposes)
-            curTime = datetime.datetime.now().time()
+            curTime = datetime.datetime.now()
+            if not self.isHeader:
+                self.startTime=curTime
+            curTime=curTime-self.startTime
             #get temperature in C
-            temp=self.TC.getTemp()
+            temp = self.TC.getTemp()
+
             #time, shear mod data
-            data=self.Oscope.getData()
+
+            data = self.Oscope.getData()
+
             self.data=[curTime,temp,data[0],data[1]]
             # saveData to csv format
-            header=['time,temp, peak time, shear']
+            header=['time','temp', 'peak time', 'shear']
             with open(self.saveStr, 'a',newline='') as resultFile:
 
                 wr = csv.writer(resultFile, dialect='excel')
                 if not self.isHeader:
                     wr.writerow(header)
-                    self.isHeader is True
+                    self.isHeader= True
+
                 wr.writerow(self.data)
             self.count=self.count+1
             if self.count is self.plotCount:
+                print("Shear is: {}".format(data[1]))
+                print("Temp is {}".format(temp))
+                print("Time is: {}".format(data[0]))
+
                 #time to plot data, set plot Data flag
                 self.newData = True
                 self.count=0
@@ -134,7 +146,7 @@ if __name__ == '__main__':
     import sys
 
     stopFlag = Event()
-    rgaTimer = timerPP(plotCount=5, event=stopFlag, period=1)
+    rgaTimer = timerPP(plotCount=5, event=stopFlag, period=.1)
     rgaTimer.start()
     if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
         QtGui.QApplication.instance().exec_()
