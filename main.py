@@ -16,6 +16,8 @@ from threading import Event
 from Oscope import OScope
 from temperature import TLogger
 import datetime
+now = datetime.datetime.now()
+
 import csv
 pg.setConfigOption('background', 'w')
 pg.setConfigOption('foreground', 'k')
@@ -90,10 +92,13 @@ class timerPP(Thread):
         #plot new data every plotCount data acquisitions
         self.plotCount=plotCount
         self.count=0
+        #flag for header line
+        self.isHeader=False
         #grab an OScope
         self.Oscope=OScope()
         #grab a TC Logger
         self.TC=TLogger()
+        self.saveStr="ShearTest_"+now.strftime("%Y_%m_%d")+".csv"
     def getData(self):
         self.newData=False
         return self.data
@@ -107,13 +112,19 @@ class timerPP(Thread):
             data=self.Oscope.getData()
             self.data=[curTime,temp,data[0],data[1]]
             # saveData to csv format
-            with open("output.csv", 'ab') as resultFile:
+            header=['time,temp, peak time, shear']
+            with open(self.saveStr, 'a',newline='') as resultFile:
+
                 wr = csv.writer(resultFile, dialect='excel')
+                if not self.isHeader:
+                    wr.writerow(header)
+                    self.isHeader is True
                 wr.writerow(self.data)
             self.count=self.count+1
             if self.count is self.plotCount:
                 #time to plot data, set plot Data flag
                 self.newData = True
+                self.count=0
 
 timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
@@ -123,7 +134,7 @@ if __name__ == '__main__':
     import sys
 
     stopFlag = Event()
-    rgaTimer = timerPP(plotCount=5, event=stopFlag, period=2)
+    rgaTimer = timerPP(plotCount=5, event=stopFlag, period=1)
     rgaTimer.start()
     if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
         QtGui.QApplication.instance().exec_()
