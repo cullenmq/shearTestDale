@@ -17,13 +17,21 @@ from Oscope import OScope
 from temperature import TLogger
 import datetime
 from multiprocessing.pool import ThreadPool
-
 import time
 now = datetime.datetime.now()
 import csv
 
+##########################
+##########################
+###EDIT CONFIG PARAMS HERE:
 H=.00969 #um
 RHO= 8000#kg/m3
+##########################
+##########################
+
+
+
+
 
 pg.setConfigOption('background', 'w')
 pg.setConfigOption('foreground', 'k')
@@ -140,7 +148,7 @@ class timerPP(Thread):
             self.data=[curTime,temp,data[0],data[1]]
             # saveData to csv format
             configData="H= {},RHO={}".format(H,RHO)
-            header=['time','temp', 'peak time', 'shear']
+            header=['time','temp', 'peak time', 'shear',configData]
             with open(self.saveStr, 'a',newline='') as resultFile:
 
                 wr = csv.writer(resultFile, dialect='excel')
