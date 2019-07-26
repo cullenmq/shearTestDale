@@ -115,6 +115,8 @@ class timerPP(Thread):
             #record loop time
             startTime=time.time()
             #get system time (for logging purposes)
+            if not self.isHeader:
+                data = self.Oscope.getData(True)
             curTime = datetime.datetime.now()
             if not self.isHeader:
                 self.startTime=curTime
@@ -125,18 +127,19 @@ class timerPP(Thread):
             #multithread
             tcThread=ThreadPool(processes=1)#(target=self.TC.getTemp)
             async_result=tcThread.apply_async(self.TC.getTemp)
+
             data = self.Oscope.getData()
             temp=async_result.get()#get return value from getTemp
 
             #temp = self.TC.getTemp()
             #time, shear mod data
-            print(time.time()-startTime)
 
 
 
 
             self.data=[curTime,temp,data[0],data[1]]
             # saveData to csv format
+            configData="H= {},RHO={}".format(H,RHO)
             header=['time','temp', 'peak time', 'shear']
             with open(self.saveStr, 'a',newline='') as resultFile:
 

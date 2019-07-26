@@ -4,7 +4,7 @@ from builtins import *  # @UnusedWildImport
 from mcculw import ul
 from mcculw.enums import TempScale
 from mcculw.ul import ULError
-
+import time
 import util
 from examples.props.ai import AnalogInputProps
 
@@ -34,11 +34,13 @@ class TLogger():
             print("Device Not Initialized")
             return 0
         try:
+            startTime=time.time()
             # Get the value from the device (optional parameters omitted)
             value = ul.t_in(self.board_num, self.channel, TempScale.CELSIUS)
 
             # Display the value
             #print("Channel " + str(self.channel) + " Value (deg C): " + str(value))
+            #print("Temp acquisition time is : {}".format(time.time()-startTime))
             return value
         except ULError as e:
             util.print_ul_error(e)

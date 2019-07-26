@@ -10,10 +10,10 @@
 
 import visa
 import numpy as np
+import datetime
 from struct import unpack
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
-
 
 class OScope:
     def __init__(self, port='USB0::0x0699::0x0374::C012252::INSTR'):
@@ -35,8 +35,10 @@ class OScope:
         self.yzero = float(self.scope.query('WFMPRE:YZERO?'))
         self.yoff = float(self.scope.query('WFMPRE:YOFF?'))
         self.xincr = float(self.scope.query('WFMPRE:XINCR?'))
-    def getData(self,isPlot=True):
-        self.scope.write('CURVE?')
+    def getData(self,isPlot=False):
+        now = datetime.datetime.now()
+        data=self.scope.write('CURVE?')
+
         data = self.scope.read_raw()
         headerlen = 2 + int(data[1])
         header = data[:headerlen]
@@ -54,10 +56,11 @@ class OScope:
             # plt.plot(Time, Volts,'b')#,peaks)#,Volts[peaks],'bx')
             plt.show()
         # G=(2h/t)^2/rho, h=height of sample, t is time between peaks 3 and 4, rho=density
-        print(self.rho)
 
         G= (2*self.h/time)*(2*self.h/time)/self.rho
         #print("Shear is: {}".format(G))
         data=[time,G]
+        #print("oscope acquisition time is {}".format(datetime.datetime.now()-now))
+
         return data
 
