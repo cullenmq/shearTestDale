@@ -14,16 +14,18 @@ from struct import unpack
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 
+
 class OScope:
-    def __init__(self, port='USB::0x0699::0x0374::C012252::INSTR'):
+    def __init__(self, port='USB0::0x0699::0x0374::C012252::INSTR'):
         rm = visa.ResourceManager()
         scope = rm.get_instrument(port)
+        #scope.timeout = 25000
         scope.write('DATA:SOU CH1')
         scope.write('DATA:WIDTH 1')
         scope.write('DATA:ENC RPB')
         self.scope=scope
         self.getConfigData()
-        self.configSample()
+        #self.configSample()
     #h is height of sample (m), rho is density of sample (kg/m^3)
     def configSample(self,h=.00948,rho=8960):
         self.h=h
@@ -33,7 +35,7 @@ class OScope:
         self.yzero = float(self.scope.query('WFMPRE:YZERO?'))
         self.yoff = float(self.scope.query('WFMPRE:YOFF?'))
         self.xincr = float(self.scope.query('WFMPRE:XINCR?'))
-    def getData(self,isPlot=False):
+    def getData(self,isPlot=True):
         self.scope.write('CURVE?')
         data = self.scope.read_raw()
         headerlen = 2 + int(data[1])
@@ -42,7 +44,7 @@ class OScope:
         ADC_wave = np.array(unpack('%sB' % len(ADC_wave),ADC_wave))
         Volts = (ADC_wave - self.yoff) * self.ymult  + self.yzero
         Time = np.arange(0, self.xincr * len(Volts), self.xincr)
-        peaks, _ = find_peaks(Volts,distance=150,height=0.5)
+        peaks, _ = find_peaks(Volts,distance=200,height=2)
         if peaks.size>=4:
             time=Time[peaks[3]]-Time[peaks[2]]
             #print("Time is: {}".format(time))
@@ -52,6 +54,8 @@ class OScope:
             # plt.plot(Time, Volts,'b')#,peaks)#,Volts[peaks],'bx')
             plt.show()
         # G=(2h/t)^2/rho, h=height of sample, t is time between peaks 3 and 4, rho=density
+        print(self.rho)
+
         G= (2*self.h/time)*(2*self.h/time)/self.rho
         #print("Shear is: {}".format(G))
         data=[time,G]

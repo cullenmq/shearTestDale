@@ -16,10 +16,15 @@ from threading import Event
 from Oscope import OScope
 from temperature import TLogger
 import datetime
+from multiprocessing.pool import ThreadPool
+
 import time
 now = datetime.datetime.now()
-
 import csv
+
+H=.00969 #um
+RHO= 8000#kg/m3
+
 pg.setConfigOption('background', 'w')
 pg.setConfigOption('foreground', 'k')
 win = pg.GraphicsWindow()
@@ -88,6 +93,7 @@ class timerPP(Thread):
         Thread.__init__(self)
         self.stopped = event
         self.period=period
+        self.waitTime=0
         self.newData=False
         self.data=[]
         #plot new data every plotCount data acquisitions
@@ -97,6 +103,7 @@ class timerPP(Thread):
         self.isHeader=False
         #grab an OScope
         self.Oscope=OScope()
+        self.Oscope.configSample(h=H,rho=RHO)
         #grab a TC Logger
         self.TC=TLogger()
         self.saveStr="ShearTest_"+now.strftime("%Y_%m_%d")+".csv"
@@ -104,18 +111,29 @@ class timerPP(Thread):
         self.newData=False
         return self.data
     def run(self):
-        while not self.stopped.wait(self.period):
+        while not self.stopped.wait(self.waitTime):
+            #record loop time
+            startTime=time.time()
             #get system time (for logging purposes)
             curTime = datetime.datetime.now()
             if not self.isHeader:
                 self.startTime=curTime
             curTime=curTime-self.startTime
             #get temperature in C
-            temp = self.TC.getTemp()
 
-            #time, shear mod data
 
+            #multithread
+            tcThread=ThreadPool(processes=1)#(target=self.TC.getTemp)
+            async_result=tcThread.apply_async(self.TC.getTemp)
             data = self.Oscope.getData()
+            temp=async_result.get()#get return value from getTemp
+
+            #temp = self.TC.getTemp()
+            #time, shear mod data
+            print(time.time()-startTime)
+
+
+
 
             self.data=[curTime,temp,data[0],data[1]]
             # saveData to csv format
@@ -137,6 +155,9 @@ class timerPP(Thread):
                 #time to plot data, set plot Data flag
                 self.newData = True
                 self.count=0
+            self.waitTime=self.period-(time.time()-startTime)
+            if self.waitTime<0:
+                self.waitTime=0
 
 timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
