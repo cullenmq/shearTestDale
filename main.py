@@ -26,6 +26,7 @@ import csv
 ###EDIT CONFIG PARAMS HERE:
 H=.00969 #um
 RHO= 8000#kg/m3
+sampleName= "BMG test sample 1"
 ##########################
 ##########################
 
@@ -147,7 +148,7 @@ class timerPP(Thread):
 
             self.data=[curTime,temp,data[0],data[1]]
             # saveData to csv format
-            configData="H= {},RHO={}".format(H,RHO)
+            configData="H= {},RHO={}, sample={}".format(H,RHO,sampleName)
             header=['time','temp', 'peak time', 'shear',configData]
             with open(self.saveStr, 'a',newline='') as resultFile:
 
