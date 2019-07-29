@@ -57,7 +57,7 @@ class OScope:
             plt.show()
         # G=(2h/t)^2/rho, h=height of sample, t is time between peaks 3 and 4, rho=density
 
-        G= (2*self.h/time)*(2*self.h/time)/self.rho
+        G= ((2*self.h/time)*(2*self.h/time))*self.rho
         #print("Shear is: {}".format(G))
         data=[time,G]
         #print("oscope acquisition time is {}".format(datetime.datetime.now()-now))
