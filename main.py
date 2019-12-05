@@ -18,21 +18,30 @@ from temperature import TLogger
 import datetime
 from multiprocessing.pool import ThreadPool
 import time
+import ctypes
 now = datetime.datetime.now()
 import csv
-
+import sys
 ##########################
 ##########################
 ###EDIT CONFIG PARAMS HERE:
-H=.00969 #um
-RHO= 8000#kg/m3
-sampleName= "BMG test sample 1"
+H=.00217 #m
+RHO= 7850#kg/m3
+saveloc="C:\\Users\\LAB\\PycharmProjects\\shearTest\\ShearDaleReb\\"
+sampleName= "Ni-239_RT_1"
+#aqcuire data from pyrometer
+isPyrometer=True
 ##########################
 ##########################
 
 
-
-
+isSaveData=ctypes.windll.user32.MessageBoxW(0, "Do you want to save waveforms?","Save Waveforms?",4)
+if (isSaveData  == 6):
+    print("will save data")
+    isSaveData=True
+else:
+    print("will not save data")
+    isSaveData=False
 
 pg.setConfigOption('background', 'w')
 pg.setConfigOption('foreground', 'k')
@@ -111,11 +120,13 @@ class timerPP(Thread):
         #flag for header line
         self.isHeader=False
         #grab an OScope
-        self.Oscope=OScope()
+        self.Oscope=OScope(saveLoc=saveloc)
         self.Oscope.configSample(h=H,rho=RHO)
         #grab a TC Logger
-        self.TC=TLogger()
-        self.saveStr="ShearTest_"+now.strftime("%Y_%m_%d")+".csv"
+        if (not isPyrometer):
+            self.TC=TLogger()
+        #os.mkdir("/ShearTest_"+now.strftime("%Y_%m_%d"))
+        self.saveStr=saveloc+"ShearTest_"+now.strftime("%Y_%m_%d")+".csv"
     def getData(self):
         self.newData=False
         return self.data
@@ -125,25 +136,42 @@ class timerPP(Thread):
             startTime=time.time()
             #get system time (for logging purposes)
             if not self.isHeader:
-                data = self.Oscope.getData(True)
+                data = self.Oscope.getData(isPlot=True)
             curTime = datetime.datetime.now()
+            now= datetime.datetime.now()
             if not self.isHeader:
                 self.startTime=curTime
-            curTime=curTime-self.startTime
+            curTime=now.strftime("%H:%M:%S.%f")#curTime-self.startTime
             #get temperature in C
 
+            self.count = self.count + 1
 
             #multithread
-            tcThread=ThreadPool(processes=1)#(target=self.TC.getTemp)
-            async_result=tcThread.apply_async(self.TC.getTemp)
+            if not isPyrometer:
+                tcThread=ThreadPool(processes=1)#(target=self.TC.getTemp)
+                async_result=tcThread.apply_async(self.TC.getTemp)
+                now=(datetime.datetime.now())
+                if self.count is self.plotCount:
 
-            data = self.Oscope.getData()
-            temp=async_result.get()#get return value from getTemp
+                    data = self.Oscope.getData(saveData=isSaveData)
+                else:
+                    data = self.Oscope.getData()
+
+                print(datetime.datetime.now() - now)
+                temp = async_result.get()  # get return value from getTemp
+            else:
+                temp=self.Oscope.getTemp()
+                if self.count is self.plotCount:
+
+                    data = self.Oscope.getData(saveData=isSaveData)
+                else:
+                    data = self.Oscope.getData()
+
+
+
 
             #temp = self.TC.getTemp()
             #time, shear mod data
-
-
 
 
             self.data=[curTime,temp,data[0],data[1]]
@@ -158,7 +186,6 @@ class timerPP(Thread):
                     self.isHeader= True
 
                 wr.writerow(self.data)
-            self.count=self.count+1
             if self.count is self.plotCount:
                 print("Shear is: {}".format(data[1]))
                 print("Temp is {}".format(temp))
@@ -174,7 +201,6 @@ class timerPP(Thread):
 timer = pg.QtCore.QTimer()
 timer.timeout.connect(update)
 timer.start(50)
-## Start Qt event loop unless running in interactive mode or using pyside.
 if __name__ == '__main__':
     import sys
 
@@ -182,7 +208,9 @@ if __name__ == '__main__':
     rgaTimer = timerPP(plotCount=5, event=stopFlag, period=.1)
     rgaTimer.start()
     if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
-        QtGui.QApplication.instance().exec_()
+        QtGui.QApplication.instance().exec_()  ## Start Qt event loop unless running in interactive mode or using pyside.
+
+
 
 
 

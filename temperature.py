@@ -7,7 +7,7 @@ from mcculw.ul import ULError
 import time
 import util
 from examples.props.ai import AnalogInputProps
-
+import datetime
 
 
 class TLogger():
@@ -29,18 +29,22 @@ class TLogger():
         #if we made it this far, we gucci
         self.isInit = True
         return
+
     def getTemp(self):
+        now = (datetime.datetime.now())
         if not self.isInit:
             print("Device Not Initialized")
             return 0
         try:
             startTime=time.time()
             # Get the value from the device (optional parameters omitted)
-            value = ul.t_in(self.board_num, self.channel, TempScale.CELSIUS)
+            value = 25#ul.t_in(self.board_num, self.channel, TempScale.CELSIUS)
 
             # Display the value
             #print("Channel " + str(self.channel) + " Value (deg C): " + str(value))
             #print("Temp acquisition time is : {}".format(time.time()-startTime))
+
+            #to switch to pyrometer, set value here e.g. value=getPyrometerTemp()
             return value
         except ULError as e:
             util.print_ul_error(e)
