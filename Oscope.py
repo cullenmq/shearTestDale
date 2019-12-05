@@ -94,7 +94,7 @@ class OScope:
         Volts = (ADC_wave - self.yoff) * self.ymult  + self.yzero
         Time = np.arange(0, self.xincr * len(Volts), self.xincr)
         #peaks, _ = find_peaks(Volts,distance=500,height=.9,prominence=1)
-        peaks, _ = find_peaks(Volts, distance=500, height=.9, prominence=1)
+        peaks, _ = find_peaks(Volts, distance=500, height=.2, prominence=1)
         numpeaks=peaks.size
         #print("time 3 is: {}".format(datetime.datetime.now() - now))
         if numpeaks>=2:
