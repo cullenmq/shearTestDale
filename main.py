@@ -25,10 +25,10 @@ import sys
 ##########################
 ##########################
 ###EDIT CONFIG PARAMS HERE:
-H=.00217 #m
-RHO= 7850#kg/m3
+H=.002002 #m
+RHO= 7715#kg/m3
 saveloc="C:\\Users\\LAB\\PycharmProjects\\shearTest\\ShearDaleReb\\"
-sampleName= "Ni-239_RT_1"
+sampleName= "Ni-239_P11_RT_1"
 #aqcuire data from pyrometer
 isPyrometer=True
 ##########################
