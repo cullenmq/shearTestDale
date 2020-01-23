@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d59c6231-bb7f-481d-945f-811b8414731e" name="Default" comment="Corrected shear modulus equation.">
+    <list default="true" id="d59c6231-bb7f-481d-945f-811b8414731e" name="Default" comment="shearTestDale split">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Oscope.py" beforeDir="false" afterPath="$PROJECT_DIR$/Oscope.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +17,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1004">
-              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+            <state relative-caret-position="278">
+              <caret line="195" column="50" lean-forward="true" selection-start-line="195" selection-start-column="50" selection-end-line="195" selection-end-column="50" />
+              <folding>
+                <element signature="e#329#351#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -28,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/temperature.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-426">
-              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+            <state relative-caret-position="251">
+              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -37,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Oscope.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+            <state relative-caret-position="-38">
+              <caret line="40" column="23" lean-forward="true" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
               <folding>
                 <element signature="e#469#479#0" expanded="true" />
               </folding>
@@ -60,7 +64,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getData</find>
       <find>@py</find>
       <find>period</find>
       <find>print</find>
@@ -90,6 +93,7 @@
       <find>savedata</find>
       <find>4000</find>
       <find>rgaT</find>
+      <find>ispyto</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,11 +110,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="949" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-11" />
     <option name="y" value="-11" />
-    <option name="width" value="983" />
-    <option name="height" value="1043" />
+    <option name="width" value="984" />
+    <option name="height" value="1044" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -121,11 +125,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\" />
       <recent name="C:\Users\culle\PycharmProjects\ShearTest" />
     </key>
   </component>
@@ -338,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575510206137</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="shearTestDale split">
+      <created>1576886867134</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1576886867134</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -351,19 +363,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="633" y="-7" width="655" height="695" extended-state="1" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.023828436" />
       <window_info id="Structure" order="1" sideWeight="0.4947644" weight="0.2494043" />
-      <window_info id="Favorites" order="2" sideWeight="0.5052356" visible="true" weight="0.062402494" />
+      <window_info id="Favorites" order="2" sideWeight="0.5052356" weight="0.062402494" />
       <window_info anchor="bottom" id="Python Console" order="0" sideWeight="0.86258936" weight="0.3280142" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.3280142" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.1950078" side_tool="true" visible="true" weight="0.3105802" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.19594067" side_tool="true" visible="true" weight="0.3105802" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32854578" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32920355" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.8049922" visible="true" weight="0.3105802" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.8040593" visible="true" weight="0.3105802" />
       <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.7370929" weight="0.46276596" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -449,30 +461,26 @@
     <MESSAGE value="minor updates to code" />
     <MESSAGE value="changed header format" />
     <MESSAGE value="Corrected shear modulus equation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected shear modulus equation." />
+    <MESSAGE value="shearTestDale split" />
+    <option name="LAST_COMMIT_MESSAGE" value="shearTestDale split" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Oscope.py</url>
-          <line>123</line>
+          <line>145</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Oscope.py</url>
-          <line>65</line>
+          <line>71</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Oscope.py</url>
           <line>29</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Oscope.py</url>
-          <line>47</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -594,17 +602,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1004">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/temperature.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-426">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        <state relative-caret-position="251">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
@@ -613,10 +614,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Oscope.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="48" column="13" lean-forward="true" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+        <state relative-caret-position="-38">
+          <caret line="40" column="23" lean-forward="true" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
           <folding>
             <element signature="e#469#479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="195" column="50" lean-forward="true" selection-start-line="195" selection-start-column="50" selection-end-line="195" selection-end-column="50" />
+          <folding>
+            <element signature="e#329#351#0" expanded="true" />
           </folding>
         </state>
       </provider>

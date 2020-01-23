@@ -32,6 +32,7 @@ class OScope:
         self.scope=scope
         self.getConfigData()
         self.configTempChannel()
+        self.configPyro()
     def __del__(self):
         print("closing oscope")
         self.ymult = float(self.scope.query('WFMPRE:YMULT?'))
@@ -50,6 +51,11 @@ class OScope:
         self.Tymult = float(self.scope.query('WFMPRE:YMULT?'))
         self.Tyzero = float(self.scope.query('WFMPRE:YZERO?'))
         self.Tyoff = float(self.scope.query('WFMPRE:YOFF?'))
+    def configPyro(self):
+        self.scope.write('DATA:SOU CH3')
+        self.Pyroymult = float(self.scope.query('WFMPRE:YMULT?'))
+        self.Pyroyzero = float(self.scope.query('WFMPRE:YZERO?'))
+        self.Pyroyoff = float(self.scope.query('WFMPRE:YOFF?'))
     def getTemp(self):
         #set scope to channel 2
         self.scope.write('DATA:SOU CH2')
@@ -67,7 +73,23 @@ class OScope:
         volt=np.average(Volts[3900:4000])
         #save first element in voltage
         return((volt-1.25)/.005)
+    def getPyro(self):
+        #set scope to channel 2
+        self.scope.write('DATA:SOU CH3')
 
+        #acquire data
+        data = self.scope.write('CURVE?')
+        data = self.scope.read_raw()
+        #throw out header
+        headerlen = 2 + int(data[1])
+        header = data[:headerlen]
+        ADC_wave = data[headerlen:-1]
+        ADC_wave = np.array(unpack('%sB' % len(ADC_wave), ADC_wave))
+        #convert to voltage
+        Volts = (ADC_wave - self.Pyroyoff) * self.Pyroymult + self.Pyroyzero
+        volt=np.average(Volts[3900:4000])
+        #save first element in voltage
+        return(volt*80+200)
     def getConfigData(self):
         self.ymult = float(self.scope.query('WFMPRE:YMULT?'))
         self.yzero = float(self.scope.query('WFMPRE:YZERO?'))

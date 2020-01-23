@@ -148,6 +148,7 @@ class timerPP(Thread):
 
             #multithread
             if not isPyrometer:
+                pyro=-1
                 tcThread=ThreadPool(processes=1)#(target=self.TC.getTemp)
                 async_result=tcThread.apply_async(self.TC.getTemp)
                 now=(datetime.datetime.now())
@@ -161,6 +162,7 @@ class timerPP(Thread):
                 temp = async_result.get()  # get return value from getTemp
             else:
                 temp=self.Oscope.getTemp()
+                pyro=self.Oscope.getPyro()
                 if self.count is self.plotCount:
 
                     data = self.Oscope.getData(saveData=isSaveData)
@@ -174,10 +176,10 @@ class timerPP(Thread):
             #time, shear mod data
 
 
-            self.data=[curTime,temp,data[0],data[1]]
+            self.data=[curTime,temp,pyro,data[0],data[1]]
             # saveData to csv format
             configData="H= {},RHO={}, sample={}".format(H,RHO,sampleName)
-            header=['time','temp', 'peak time', 'shear',configData]
+            header=['time','temp','pyro', 'peak time', 'shear',configData]
             with open(self.saveStr, 'a',newline='') as resultFile:
 
                 wr = csv.writer(resultFile, dialect='excel')
