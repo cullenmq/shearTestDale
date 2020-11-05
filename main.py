@@ -15,6 +15,7 @@ from threading import Thread
 from threading import Event
 from Oscope import OScope
 from temperature import TLogger
+from ArduinoTCReader import arduinoTC
 import datetime
 from multiprocessing.pool import ThreadPool
 import time
@@ -25,10 +26,10 @@ import sys
 ##########################
 ##########################
 ###EDIT CONFIG PARAMS HERE:
-H=.002002 #m
-RHO= 7715#kg/m3
+H=.006 #m
+RHO= 7800#7715#kg/m3
 saveloc="C:\\Users\\LAB\\PycharmProjects\\shearTest\\ShearDaleReb\\"
-sampleName= "Ni-239_P11_RT_1"
+sampleName= "Ni239 test piece"
 #aqcuire data from pyrometer
 isPyrometer=True
 ##########################
@@ -125,11 +126,24 @@ class timerPP(Thread):
         #grab a TC Logger
         if (not isPyrometer):
             self.TC=TLogger()
+        else:
+            self.TC=arduinoTC()
+            self.pyro=arduinoTC('COM7')
         #os.mkdir("/ShearTest_"+now.strftime("%Y_%m_%d"))
         self.saveStr=saveloc+"ShearTest_"+now.strftime("%Y_%m_%d")+".csv"
     def getData(self):
         self.newData=False
         return self.data
+    def getPyroTemp(self):
+        TCdata=self.TC.getTemp()
+        if isPyrometer:
+            pyroData=self.pyro.getTemp()
+        else:
+            pyroData=[-1,-1]
+        result=[]
+        result.append(TCdata[0])
+        result.append(pyroData[1])
+        return result
     def run(self):
         while not self.stopped.wait(self.waitTime):
             #record loop time
@@ -147,29 +161,26 @@ class timerPP(Thread):
             self.count = self.count + 1
 
             #multithread
+            now = (datetime.datetime.now())
+            tcThread = ThreadPool(processes=1)  # (target=self.TC.getTemp)
+
+            async_result = tcThread.apply_async(self.getPyroTemp)
+            data = self.Oscope.getData(saveData=isSaveData)
+            #if self.count is self.plotCount:
+
+                #data = self.Oscope.getData(saveData=isSaveData)
+            #else:
+             #   data = self.Oscope.getData()
+
+            TCdata= async_result.get()  # get return value from getTemp
+            #print("getting results")
             if not isPyrometer:
+                temp =TCdata[0]
                 pyro=-1
-                tcThread=ThreadPool(processes=1)#(target=self.TC.getTemp)
-                async_result=tcThread.apply_async(self.TC.getTemp)
-                now=(datetime.datetime.now())
-                if self.count is self.plotCount:
-
-                    data = self.Oscope.getData(saveData=isSaveData)
-                else:
-                    data = self.Oscope.getData()
-
-                print(datetime.datetime.now() - now)
-                temp = async_result.get()  # get return value from getTemp
             else:
-                temp=self.Oscope.getTemp()
-                pyro=self.Oscope.getPyro()
-                if self.count is self.plotCount:
-
-                    data = self.Oscope.getData(saveData=isSaveData)
-                else:
-                    data = self.Oscope.getData()
-
-
+                temp=TCdata[0]
+                pyro=TCdata[1]
+            print(datetime.datetime.now() - now)
 
 
             #temp = self.TC.getTemp()
@@ -190,7 +201,8 @@ class timerPP(Thread):
                 wr.writerow(self.data)
             if self.count is self.plotCount:
                 print("Shear is: {}".format(data[1]))
-                print("Temp is {}".format(temp))
+                print("Temp TC is {}".format(temp))
+                print("Pyro Te is {}".format(pyro))
                 print("Time is: {}".format(data[0]))
 
                 #time to plot data, set plot Data flag

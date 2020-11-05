@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d59c6231-bb7f-481d-945f-811b8414731e" name="Default" comment="shearTestDale split">
+    <list default="true" id="d59c6231-bb7f-481d-945f-811b8414731e" name="Default" comment="updated with pyrometer">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ArduinoTCReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Oscope.py" beforeDir="false" afterPath="$PROJECT_DIR$/Oscope.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,23 +22,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="195" column="50" lean-forward="true" selection-start-line="195" selection-start-column="50" selection-end-line="195" selection-end-column="50" />
-              <folding>
-                <element signature="e#329#351#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/temperature.py">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/threading.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="178">
+              <caret line="1174" column="8" selection-start-line="1174" selection-start-column="8" selection-end-line="1174" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -44,10 +40,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Oscope.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="40" column="23" lean-forward="true" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+            <state relative-caret-position="-1439">
+              <caret line="21" column="50" lean-forward="true" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ArduinoTCReader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
               <folding>
-                <element signature="e#469#479#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,17 +69,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>@py</find>
-      <find>period</find>
-      <find>print</find>
-      <find>datetime</find>
-      <find>getTe</find>
-      <find>date</find>
-      <find>Oscope</find>
-      <find>self.count</find>
-      <find>strf</find>
-      <find>mkdir</find>
-      <find>get</find>
       <find>self.period</find>
       <find>py</find>
       <find>ispyrom</find>
@@ -94,6 +88,17 @@
       <find>4000</find>
       <find>rgaT</find>
       <find>ispyto</find>
+      <find>temp is</find>
+      <find>arduinoTC</find>
+      <find>isSaveData</find>
+      <find>config</find>
+      <find>getData</find>
+      <find>get</find>
+      <find>com6</find>
+      <find>COM</find>
+      <find>tlogger</find>
+      <find>arduinotc</find>
+      <find>arduinotcreader</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,15 +111,16 @@
         <option value="$PROJECT_DIR$/temperature.py" />
         <option value="$USER_HOME$/Downloads/get_waveform_example/get_waveform_example.py" />
         <option value="$PROJECT_DIR$/Oscope.py" />
+        <option value="$PROJECT_DIR$/ArduinoTCReader.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="984" />
-    <option name="height" value="1044" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="82" />
+    <option name="y" value="1" />
+    <option name="width" value="1695" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -126,7 +132,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="E:/" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -147,6 +153,48 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="ArduinoTCReader" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ShearTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ArduinoTCReader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Oscope" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ShearTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Oscope.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="get_waveform_example (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ShearTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -168,27 +216,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="get_waveform_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ShearTest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\culle\PycharmProjects\ShearTest\Oscope.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ShearTest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -202,27 +229,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="temperature (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ShearTest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temperature.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -253,19 +259,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.ArduinoTCReader" />
+      <item itemvalue="Python.Oscope" />
       <item itemvalue="Python.get_waveform_example (1)" />
-      <item itemvalue="Python.get_waveform_example" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.temperature (2)" />
       <item itemvalue="Python.temperature (3)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.get_waveform_example (1)" />
-        <item itemvalue="Python.get_waveform_example" />
         <item itemvalue="Python.temperature (3)" />
-        <item itemvalue="Python.temperature (2)" />
+        <item itemvalue="Python.Oscope" />
+        <item itemvalue="Python.get_waveform_example (1)" />
+        <item itemvalue="Python.ArduinoTCReader" />
       </list>
     </recent_temporary>
   </component>
@@ -350,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576886867134</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updated with pyrometer">
+      <created>1579815504344</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1579815504344</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -363,20 +376,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="55" y="1" width="1130" height="688" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.023828436" />
       <window_info id="Structure" order="1" sideWeight="0.4947644" weight="0.2494043" />
       <window_info id="Favorites" order="2" sideWeight="0.5052356" weight="0.062402494" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Python Console" order="0" sideWeight="0.86258936" weight="0.3280142" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.3280142" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.19594067" side_tool="true" visible="true" weight="0.3105802" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.19906323" side_tool="true" weight="0.30546075" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32854578" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32920355" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.8040593" visible="true" weight="0.3105802" />
-      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.7370929" weight="0.46276596" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.80093676" visible="true" weight="0.3851468" />
+      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.735363" weight="0.4611399" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32920355" />
@@ -385,17 +399,17 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26846704" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Python Console" order="0" weight="0.3280142" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.023828436" />
+      <window_info id="Structure" order="1" sideWeight="0.4947644" weight="0.2494043" />
+      <window_info id="Favorites" order="2" sideWeight="0.5052356" weight="0.062402494" />
+      <window_info anchor="bottom" id="Python Console" order="0" sideWeight="0.86258936" weight="0.3280142" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.3280142" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50039715" side_tool="true" visible="true" weight="0.32269505" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.19906323" side_tool="true" weight="0.30546075" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32854578" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32920355" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49960285" weight="0.32269505" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.39893618" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.80093676" visible="true" weight="0.30546075" />
+      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.735363" weight="0.46245733" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32920355" />
@@ -462,25 +476,21 @@
     <MESSAGE value="changed header format" />
     <MESSAGE value="Corrected shear modulus equation." />
     <MESSAGE value="shearTestDale split" />
-    <option name="LAST_COMMIT_MESSAGE" value="shearTestDale split" />
+    <MESSAGE value="updated with pyrometer" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated with pyrometer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Oscope.py</url>
-          <line>145</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/ArduinoTCReader.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Oscope.py</url>
-          <line>71</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Oscope.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/ArduinoTCReader.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -602,33 +612,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/multiprocessing/pool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="650" selection-start-line="650" selection-end-line="650" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/serial/serialwin32.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/temperature.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+        <state relative-caret-position="799">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/serial/serialutil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2091">
+          <caret line="124" column="10" selection-start-line="124" selection-start-column="10" selection-end-line="124" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="1174" column="8" selection-start-line="1174" selection-start-column="8" selection-end-line="1174" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Oscope.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="40" column="23" lean-forward="true" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+        <state relative-caret-position="-1439">
+          <caret line="21" column="50" lean-forward="true" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ArduinoTCReader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="36" lean-forward="true" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding>
-            <element signature="e#469#479#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="195" column="50" lean-forward="true" selection-start-line="195" selection-start-column="50" selection-end-line="195" selection-end-column="50" />
-          <folding>
-            <element signature="e#329#351#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
